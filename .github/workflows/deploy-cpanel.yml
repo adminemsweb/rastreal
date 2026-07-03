@@ -1,0 +1,37 @@
+name: Publicar no cPanel
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: producao-rastreall
+  cancel-in-progress: false
+
+jobs:
+  validar-e-publicar:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Baixar projeto
+        uses: actions/checkout@v4
+
+      - name: Validar arquivos PHP
+        run: |
+          find . -type f -name '*.php' -not -path './.git/*' -print0 | xargs -0 -n1 php -l
+
+      - name: Publicar por FTP no cPanel
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+        with:
+          server: ${{ secrets.CPANEL_FTP_HOST }}
+          username: ${{ secrets.CPANEL_FTP_USERNAME }}
+          password: ${{ secrets.CPANEL_FTP_PASSWORD }}
+          server-dir: ${{ secrets.CPANEL_FTP_DIRECTORY }}
+          protocol: ftps
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .env
+            storage/leads/**
+            storage/logs/**
+            iniciar-site.bat
+            serve.php

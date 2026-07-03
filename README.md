@@ -33,3 +33,7 @@ Acesse `http://localhost:8000`. O endpoint de monitoramento é `/health`.
 Use a pasta `public/` como DocumentRoot, habilite `mod_rewrite` no Apache e conceda escrita ao PHP somente em `storage/`. Copie `.env.example` para `.env`, mantenha `APP_DEBUG=false` e use HTTPS.
 
 Os leads são gravados em `storage/leads/leads.csv`. Para alto volume, substitua `LeadService` por banco de dados e CRM.
+
+## Deploy no cPanel
+
+O workflow manual `Publicar no cPanel` usa FTPS e os secrets `CPANEL_FTP_HOST`, `CPANEL_FTP_USERNAME`, `CPANEL_FTP_PASSWORD` e `CPANEL_FTP_DIRECTORY`. O domínio pode usar a pasta `public/` como DocumentRoot ou receber o projeto completo no `public_html`, onde o `.htaccess` da raiz protege o código interno.

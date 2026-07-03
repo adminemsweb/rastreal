@@ -1,0 +1,30 @@
+Options -Indexes
+RewriteEngine On
+
+# Impede acesso web ao código e aos dados internos.
+RewriteRule ^(?:app|config|storage|views|\.git)/ - [F,L,NC]
+<FilesMatch "^(\.env|\.env\.example|\.gitignore|README\.md|serve\.php|iniciar-site\.bat)$">
+  Require all denied
+</FilesMatch>
+
+# Expõe somente os arquivos públicos quando o projeto está no public_html.
+RewriteRule ^(assets|images|videos)/(.*)$ public/$1/$2 [L,NC]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType text/css "access plus 1 week"
+  ExpiresByType application/javascript "access plus 1 week"
+</IfModule>
