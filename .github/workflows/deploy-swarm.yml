@@ -28,26 +28,20 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.VPS_SSH_KEY }}
 
-      - name: Registrar servidor
-        run: |
-          mkdir -p ~/.ssh
-          printf '%s\n' "${{ secrets.VPS_KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
-          chmod 600 ~/.ssh/known_hosts
-
       - name: Enviar stack
         run: |
-          ssh "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" 'mkdir -p /opt/stacks/rastreall'
-          scp deploy/rastreall-stack.yml "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/opt/stacks/rastreall/stack.yml"
+          ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" 'mkdir -p /opt/stacks/rastreall'
+          scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null deploy/rastreall-stack.yml "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/opt/stacks/rastreall/stack.yml"
 
       - name: Atualizar serviço
         run: |
-          ssh "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" \
+          ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" \
             'docker pull ghcr.io/adminemsweb/rastreal:latest && docker stack deploy --with-registry-auth -c /opt/stacks/rastreall/stack.yml rastreall'
 
       - name: Confirmar disponibilidade
         run: |
           for attempt in 1 2 3 4 5 6; do
-            replicas=$(ssh "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" "docker service ls --filter name=rastreall_web --format '{{.Replicas}}'")
+            replicas=$(ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" "docker service ls --filter name=rastreall_web --format '{{.Replicas}}'")
             [ "$replicas" = "1/1" ] && exit 0
             sleep 10
           done
