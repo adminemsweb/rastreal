@@ -45,3 +45,7 @@ docker compose up -d --build
 ```
 
 O site fica disponível em `http://localhost:8080`. Cada push na branch `main` publica também `ghcr.io/adminemsweb/rastreal:latest`. Em produção, use um proxy reverso com HTTPS apontando para a porta 8080.
+
+### Produção no Docker Swarm
+
+A stack está em `deploy/rastreall-stack.yml`, conectada à rede externa `traefik_public`. Após a imagem Docker ser publicada, o workflow `Implantar Rastreall no Swarm` atualiza somente o serviço `rastreall_web` e confirma que há uma réplica saudável.
