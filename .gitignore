@@ -1,0 +1,5 @@
+/.env
+/storage/leads/*.csv
+/storage/logs/*.log
+/.idea
+/.vscode

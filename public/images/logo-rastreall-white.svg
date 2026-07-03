@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 344 88" role="img" aria-labelledby="title">
+  <title id="title">Rastreall</title>
+  <g fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round">
+    <circle cx="39" cy="34" r="20"/>
+    <path d="M25 50 14 65M53 50l11 15"/>
+  </g>
+  <circle cx="39" cy="34" r="7" fill="#FEF200"/>
+  <text x="78" y="61" fill="#FFFFFF" font-family="Manrope,Arial,sans-serif" font-size="52" font-weight="700" letter-spacing="-3">Rastreall</text>
+</svg>
