@@ -1,0 +1,8 @@
+.git
+.github
+.env
+storage/leads/*
+storage/logs/*
+iniciar-site.bat
+serve.php
+README.md

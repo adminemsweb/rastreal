@@ -1,0 +1,20 @@
+services:
+  web:
+    build: .
+    image: ghcr.io/adminemsweb/rastreal:latest
+    container_name: rastreall-site
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      APP_NAME: Rastreall
+      APP_URL: https://rastreall.com.br
+      APP_TIMEZONE: America/Sao_Paulo
+      APP_DEBUG: "false"
+    volumes:
+      - rastreall_leads:/var/www/html/storage/leads
+      - rastreall_logs:/var/www/html/storage/logs
+
+volumes:
+  rastreall_leads:
+  rastreall_logs:

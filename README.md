@@ -37,3 +37,11 @@ Os leads são gravados em `storage/leads/leads.csv`. Para alto volume, substitua
 ## Deploy no cPanel
 
 O workflow manual `Publicar no cPanel` usa FTPS e os secrets `CPANEL_FTP_HOST`, `CPANEL_FTP_USERNAME`, `CPANEL_FTP_PASSWORD` e `CPANEL_FTP_DIRECTORY`. O domínio pode usar a pasta `public/` como DocumentRoot ou receber o projeto completo no `public_html`, onde o `.htaccess` da raiz protege o código interno.
+
+## Docker
+
+```bash
+docker compose up -d --build
+```
+
+O site fica disponível em `http://localhost:8080`. Cada push na branch `main` publica também `ghcr.io/adminemsweb/rastreal:latest`. Em produção, use um proxy reverso com HTTPS apontando para a porta 8080.
