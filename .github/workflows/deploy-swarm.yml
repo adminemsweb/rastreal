@@ -36,7 +36,7 @@ jobs:
       - name: Atualizar serviço
         run: |
           ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" \
-            'docker pull ghcr.io/adminemsweb/rastreal:latest && docker stack deploy --with-registry-auth -c /opt/stacks/rastreall/stack.yml rastreall'
+            'for attempt in 1 2 3 4 5 6; do docker pull ghcr.io/adminemsweb/rastreal:latest && break; [ "$attempt" = "6" ] && exit 1; sleep 15; done; docker stack deploy --with-registry-auth -c /opt/stacks/rastreall/stack.yml rastreall'
 
       - name: Confirmar disponibilidade
         run: |
