@@ -25,7 +25,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="stylesheet" href="/assets/style.css?v=<?= filemtime(BASE_PATH . '/public/assets/style.css') ?>">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Rastreall","description":"Tecnologia em rastreamento veicular, telemetria e gestão de frotas","url":"https://rastreall.com.br","sameAs":["https://www.instagram.com/rastreall_/"],"contactPoint":{"@type":"ContactPoint","telephone":"+55-15-99789-9346","contactType":"sales","availableLanguage":"Portuguese"}}</script>
 </head>
 <body>
