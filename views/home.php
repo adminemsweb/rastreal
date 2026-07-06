@@ -91,6 +91,7 @@
         <article class="segment-card reveal"><div class="segment-art"><img src="/images/segments/veiculos-leves.jpg" alt="Carro moderno monitorado pela Rastreall" loading="lazy" width="1000" height="667"></div><div class="segment-body"><span>01</span><h3>Veículos leves</h3><p>Carros, motos e utilitários protegidos com localização, alertas e histórico completo.</p></div></article>
         <article class="segment-card reveal"><div class="segment-art"><img src="/images/segments/maquinas-ativos.jpg" alt="Trator monitorado pela Rastreall" loading="lazy" width="1000" height="667"></div><div class="segment-body"><span>02</span><h3>Máquinas e ativos</h3><p>Equipamentos agrícolas, máquinas e ativos remotos sob controle, mesmo fora da estrada.</p></div></article>
         <article class="segment-card reveal"><div class="segment-art"><img src="/images/segments/frotas-logistica.jpg" alt="Caminhão de uma operação logística monitorada" loading="lazy" width="1000" height="667"></div><div class="segment-body"><span>03</span><h3>Frotas e logística</h3><p>Telemetria, rotas, jornada e produtividade para operações que não podem parar.</p></div></article>
+        <article class="segment-card reveal"><div class="segment-art"><img src="/images/segments/bicicletas.png" alt="Bicicleta monitorada pela Rastreall" loading="lazy"></div><div class="segment-body"><span>04</span><h3>Bicicletas</h3><p>Mais segurança e tranquilidade com localização e monitoramento da sua bicicleta.</p></div></article>
       </div>
     </section>
 
